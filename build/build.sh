@@ -22,7 +22,7 @@ fi
     echo "]]"
 } > build/package.lua
 
-DARKLUA_OUTPUT=$(darklua process "$INPUT_FILE" "$OUTPUT_FILE" --config "$CONFIG_FILE" 2>&1)
+DARKLUA_OUTPUT=$(./darklua process "$INPUT_FILE" "$OUTPUT_FILE" --config "$CONFIG_FILE" 2>&1)
 
 if [ $? -ne 0 ]; then
     echo "DarkLua ended with an error:"
