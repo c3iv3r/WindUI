@@ -95,44 +95,31 @@ function DropdownMenu.New(Config, Dropdown, Element, CanCallback, Type)
     end
 
     local function RecalculateListSize()
-        local MaxHeight = CurrentCamera.ViewportSize.Y * 0.6
-            
-        local ContentY = Dropdown.UIElements.UIListLayout.AbsoluteContentSize.Y 
-        local SearchBarOffset = Dropdown.SearchBarEnabled and (Element.SearchBarHeight + (Element.MenuPadding*3)) or (Element.MenuPadding*2)
-        local TotalY = (ContentY) + SearchBarOffset
-            
-        if TotalY > MaxHeight then
-            Dropdown.UIElements.MenuCanvas.Size = UDim2.fromOffset(
-                Dropdown.UIElements.MenuCanvas.AbsoluteSize.X,
-                MaxHeight
-            )
-        else
-            Dropdown.UIElements.MenuCanvas.Size = UDim2.fromOffset(
-                Dropdown.UIElements.MenuCanvas.AbsoluteSize.X,
-                TotalY
-            )
-        end
-    end
+    -- Full height side panel
+    local topbarOffset = 54
+    local padding = 10
+    local MaxHeight = CurrentCamera.ViewportSize.Y - topbarOffset - (padding * 2)
+    
+    Dropdown.UIElements.MenuCanvas.Size = UDim2.fromOffset(
+        Dropdown.MenuWidth, -- atau set width custom
+        MaxHeight
+    )
+end
     
     function UpdatePosition()
-        local button = Dropdown.UIElements.Dropdown
-        local menu = Dropdown.UIElements.MenuCanvas
-        
-        local availableSpaceBelow = Camera.ViewportSize.Y - (button.AbsolutePosition.Y + button.AbsoluteSize.Y) - Element.MenuPadding - 54
-        local requiredSpace = menu.AbsoluteSize.Y + Element.MenuPadding
-        
-        local offset = -54 -- topbar offset
-            if availableSpaceBelow < requiredSpace then
-            offset = requiredSpace - availableSpaceBelow - 54
-        end
-        
-        menu.Position = UDim2.new(
-            0, 
-            button.AbsolutePosition.X + button.AbsoluteSize.X,
-            0, 
-            button.AbsolutePosition.Y + button.AbsoluteSize.Y - offset + Element.MenuPadding 
-        )
-    end
+    local menu = Dropdown.UIElements.MenuCanvas
+    
+    -- Side panel positioning: fixed ke kanan window
+    local padding = 10 -- jarak dari edge kanan window
+    local topbarOffset = 54 -- offset topbar
+    
+    menu.Position = UDim2.new(
+        0, 
+        Camera.ViewportSize.X - menu.AbsoluteSize.X - padding, -- kanan window
+        0, 
+        topbarOffset + padding -- dari atas window
+    )
+end
     
     local SearchLabel
     

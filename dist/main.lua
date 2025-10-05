@@ -5829,42 +5829,29 @@ am.UIElements.Menu.Frame.ScrollingFrame.CanvasSize=UDim2.fromOffset(0,am.UIEleme
 end
 
 local function RecalculateListSize()
-local ar=ag.ViewportSize.Y*0.6
 
-local as=am.UIElements.UIListLayout.AbsoluteContentSize.Y
-local at=am.SearchBarEnabled and(an.SearchBarHeight+(an.MenuPadding*3))or(an.MenuPadding*2)
-local au=(as)+at
+local ar=54
+local as=10
+local at=ag.ViewportSize.Y-ar-(as*2)
 
-if au>ar then
 am.UIElements.MenuCanvas.Size=UDim2.fromOffset(
-am.UIElements.MenuCanvas.AbsoluteSize.X,
-ar
+am.MenuWidth,
+at
 )
-else
-am.UIElements.MenuCanvas.Size=UDim2.fromOffset(
-am.UIElements.MenuCanvas.AbsoluteSize.X,
-au
-)
-end
 end
 
 function UpdatePosition()
-local ar=am.UIElements.Dropdown
-local as=am.UIElements.MenuCanvas
+local ar=am.UIElements.MenuCanvas
 
-local at=af.ViewportSize.Y-(ar.AbsolutePosition.Y+ar.AbsoluteSize.Y)-an.MenuPadding-54
-local au=as.AbsoluteSize.Y+an.MenuPadding
 
-local av=-54
-if at<au then
-av=au-at-54
-end
+local as=10
+local at=54
 
-as.Position=UDim2.new(
+ar.Position=UDim2.new(
 0,
-ar.AbsolutePosition.X+ar.AbsoluteSize.X,
+af.ViewportSize.X-ar.AbsoluteSize.X-as,
 0,
-ar.AbsolutePosition.Y+ar.AbsoluteSize.Y-av+an.MenuPadding
+at+as
 )
 end
 
