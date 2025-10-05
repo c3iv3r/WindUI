@@ -26,7 +26,7 @@ function DropdownMenu.New(Config, Dropdown, Element, CanCallback, Type)
         ThemeTag = {
             ImageColor3 = "Background",
         },
-        ImageTransparency = 1, -- 0.05
+        ImageTransparency = 0, -- 0.05
         Size = UDim2.new(1,0,1,0),
         AnchorPoint = Vector2.new(1,0),
         Position = UDim2.new(1,0,0,0),
@@ -112,7 +112,7 @@ end
     local menu = Dropdown.UIElements.MenuCanvas
     
     -- ⚙️ ADJUSTMENT MANUAL (ubah sesuai keinginan)
-    local padding = 5 -- jarak dari edge kanan
+    local padding = 15 -- jarak dari edge kanan
     local topOffset = 64 -- jarak dari atas (topbar + extra)
     local bottomPadding = 10 -- jarak dari bawah
     local sideWidth = 140 -- lebar side panel (opsional, bisa pakai menu.AbsoluteSize.X)

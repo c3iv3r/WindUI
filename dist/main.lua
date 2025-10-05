@@ -5760,7 +5760,7 @@ am.UIElements.Menu=ai.NewRoundFrame(an.MenuCorner,"Squircle",{
 ThemeTag={
 ImageColor3="Background",
 },
-ImageTransparency=1,
+ImageTransparency=0,
 Size=UDim2.new(1,0,1,0),
 AnchorPoint=Vector2.new(1,0),
 Position=UDim2.new(1,0,0,0),
@@ -5846,7 +5846,7 @@ function UpdatePosition()
 local ar=am.UIElements.MenuCanvas
 
 
-local as=5
+local as=15
 local at=64
 local au=10
 local av=140
