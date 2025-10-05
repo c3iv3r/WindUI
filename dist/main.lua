@@ -5846,10 +5846,10 @@ function UpdatePosition()
 local ar=am.UIElements.MenuCanvas
 
 
-local as=10
+local as=0
 local at=64
 local au=10
-local av=250
+local av=140
 
 
 local aw=af.ViewportSize.Y-at-au

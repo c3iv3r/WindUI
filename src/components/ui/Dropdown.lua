@@ -112,10 +112,10 @@ end
     local menu = Dropdown.UIElements.MenuCanvas
     
     -- ⚙️ ADJUSTMENT MANUAL (ubah sesuai keinginan)
-    local padding = 10 -- jarak dari edge kanan
+    local padding = 0 -- jarak dari edge kanan
     local topOffset = 64 -- jarak dari atas (topbar + extra)
     local bottomPadding = 10 -- jarak dari bawah
-    local sideWidth = 250 -- lebar side panel (opsional, bisa pakai menu.AbsoluteSize.X)
+    local sideWidth = 140 -- lebar side panel (opsional, bisa pakai menu.AbsoluteSize.X)
     
     -- Hitung maxHeight agar tidak keluar window
     local maxHeight = Camera.ViewportSize.Y - topOffset - bottomPadding
