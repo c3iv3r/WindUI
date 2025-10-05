@@ -5846,7 +5846,7 @@ function UpdatePosition()
 local ar=am.UIElements.MenuCanvas
 
 
-local as=45
+local as=48
 local at=64
 local au=10
 local av=140
@@ -9788,7 +9788,7 @@ BackgroundTransparency=1,
 TextTransparency=0.35,
 AutomaticSize="XY",
 Parent=aq.UIElements.Main and aq.UIElements.Main.Main.Topbar.Left.Title,
-TextXAlignment="Left",
+TextXAlignment="Center",
 TextSize=13,
 LayoutOrder=2,
 ThemeTag={
@@ -9812,7 +9812,7 @@ FontFace=Font.new(ag.Font,Enum.FontWeight.SemiBold),
 BackgroundTransparency=1,
 AutomaticSize="XY",
 Name="Title",
-TextXAlignment="Left",
+TextXAlignment="Center",
 TextSize=16,
 ThemeTag={
 TextColor3="Text"

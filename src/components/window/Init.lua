@@ -584,7 +584,7 @@ return function(Config)
             TextTransparency = 0.35,
             AutomaticSize = "XY",
             Parent = Window.UIElements.Main and Window.UIElements.Main.Main.Topbar.Left.Title,
-            TextXAlignment = "Left",
+            TextXAlignment = "Center",
             TextSize = 13,
             LayoutOrder = 2,
             ThemeTag = {
@@ -608,7 +608,7 @@ return function(Config)
         BackgroundTransparency = 1,
         AutomaticSize = "XY",
         Name = "Title",
-        TextXAlignment = "Left",
+        TextXAlignment = "Center",
         TextSize = 16,
         ThemeTag = {
             TextColor3 = "Text"
