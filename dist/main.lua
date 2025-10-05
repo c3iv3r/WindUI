@@ -5806,7 +5806,7 @@ Position=UDim2.new(-10,0,-10,0),
 Visible=false,
 Active=false,
 
-Parent=al.UIElements.Main,
+Parent=al.Window.UIElements.Main,
 AnchorPoint=Vector2.new(1,0),
 },{
 am.UIElements.Menu,

@@ -72,7 +72,7 @@ function DropdownMenu.New(Config, Dropdown, Element, CanCallback, Type)
         Visible = false,
         Active = false,
         --GroupTransparency = 1, -- 0
-        Parent = Config.UIElements.Main,
+        Parent = Config.Window.UIElements.Main,
         AnchorPoint = Vector2.new(1,0),
     }, {
         Dropdown.UIElements.Menu,
