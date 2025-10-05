@@ -30,6 +30,7 @@ function DropdownMenu.New(Config, Dropdown, Element, CanCallback, Type)
         Size = UDim2.new(1,0,1,0),
         AnchorPoint = Vector2.new(1,0),
         Position = UDim2.new(1,0,0,0),
+        ZIndex = 1000,
     }, {
         New("UIPadding", {
             PaddingTop = UDim.new(0, Element.MenuPadding),
@@ -74,6 +75,7 @@ function DropdownMenu.New(Config, Dropdown, Element, CanCallback, Type)
         --GroupTransparency = 1, -- 0
         Parent = Config.Window.UIElements.Main,
         AnchorPoint = Vector2.new(1,0),
+        ZIndex = 999,
     }, {
         Dropdown.UIElements.Menu,
         -- New("UIPadding", {
@@ -109,17 +111,29 @@ end
     function UpdatePosition()
     local menu = Dropdown.UIElements.MenuCanvas
     
-    -- Side panel positioning: fixed ke kanan window
-    local padding = 10 -- jarak dari edge kanan window
-    local topbarOffset = 54 -- offset topbar
+    -- ⚙️ ADJUSTMENT MANUAL (ubah sesuai keinginan)
+    local padding = 10 -- jarak dari edge kanan
+    local topOffset = 64 -- jarak dari atas (topbar + extra)
+    local bottomPadding = 10 -- jarak dari bawah
+    local sideWidth = 250 -- lebar side panel (opsional, bisa pakai menu.AbsoluteSize.X)
     
-    menu.Position = UDim2.new(
-        0, 
-        Camera.ViewportSize.X - menu.AbsoluteSize.X - padding, -- kanan window
-        0, 
-        topbarOffset + padding -- dari atas window
-    )
-end
+    -- Hitung maxHeight agar tidak keluar window
+    local maxHeight = Camera.ViewportSize.Y - topOffset - bottomPadding
+    
+    -- Posisi X: di kanan window
+    local posX = Camera.ViewportSize.X - sideWidth - padding
+    
+    -- Pastikan tidak keluar window (safety check)
+    if posX < padding then
+        posX = padding
+    end
+    
+    -- Set posisi dan size
+    menu.Position = UDim2.new(0, posX, 0, topOffset)
+    
+    -- Adjust size dengan maxHeight (menu akan auto-scroll kalau konten lebih panjang)
+    menu.Size = UDim2.new(0, sideWidth, 0, math.min(menu.AbsoluteSize.Y, maxHeight))
+    end
     
     local SearchLabel
     

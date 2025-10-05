@@ -5764,6 +5764,7 @@ ImageTransparency=1,
 Size=UDim2.new(1,0,1,0),
 AnchorPoint=Vector2.new(1,0),
 Position=UDim2.new(1,0,0,0),
+ZIndex=1000,
 },{
 aj("UIPadding",{
 PaddingTop=UDim.new(0,an.MenuPadding),
@@ -5808,6 +5809,7 @@ Active=false,
 
 Parent=al.Window.UIElements.Main,
 AnchorPoint=Vector2.new(1,0),
+ZIndex=999,
 },{
 am.UIElements.Menu,
 
@@ -5845,14 +5847,26 @@ local ar=am.UIElements.MenuCanvas
 
 
 local as=10
-local at=54
+local at=64
+local au=10
+local av=250
 
-ar.Position=UDim2.new(
-0,
-af.ViewportSize.X-ar.AbsoluteSize.X-as,
-0,
-at+as
-)
+
+local aw=af.ViewportSize.Y-at-au
+
+
+local ax=af.ViewportSize.X-av-as
+
+
+if ax<as then
+ax=as
+end
+
+
+ar.Position=UDim2.new(0,ax,0,at)
+
+
+ar.Size=UDim2.new(0,av,0,math.min(ar.AbsoluteSize.Y,aw))
 end
 
 local ar
