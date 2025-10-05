@@ -112,7 +112,7 @@ end
     local menu = Dropdown.UIElements.MenuCanvas
     
     -- ⚙️ ADJUSTMENT MANUAL (ubah sesuai keinginan)
-    local padding = 30 -- jarak dari edge kanan
+    local padding = 40 -- jarak dari edge kanan
     local topOffset = 64 -- jarak dari atas (topbar + extra)
     local bottomPadding = 10 -- jarak dari bawah
     local sideWidth = 140 -- lebar side panel (opsional, bisa pakai menu.AbsoluteSize.X)
