@@ -5735,8 +5735,8 @@ return ae end function a.G():typeof(__modImpl())local aa=a.cache.G if not aa the
 local aa={}
 
 local ac=game:GetService"UserInputService"
-local ae=game:GetService"Players".LocalPlayer:GetMouse()
-local af=game:GetService"Workspace".CurrentCamera
+local ae=game:GetService"Players".LocalPlayer:GetMouse()local af=
+game:GetService"Workspace".CurrentCamera
 
 local ag=workspace.CurrentCamera
 
@@ -5844,29 +5844,39 @@ end
 
 function UpdatePosition()
 local ar=am.UIElements.MenuCanvas
+local as=al.Window.UIElements.Main local at=
 
 
-local as=48
-local at=64
-local au=10
-local av=140
+as.AbsolutePosition
+local au=as.AbsoluteSize
 
 
-local aw=af.ViewportSize.Y-at-au
+local av=10
+local aw=54
+local ax=10
 
 
-local ax=af.ViewportSize.X-av-as
+local ay=au.Y-aw-ax
 
 
-if ax<as then
-ax=as
+local az=ar.AbsoluteSize.X>0 and ar.AbsoluteSize.X or am.MenuWidth
+local aA=au.X-az-av
+
+
+if aA<av then
+aA=av
 end
 
 
-ar.Position=UDim2.new(0,ax,0,at)
+ar.Position=UDim2.new(0,aA,0,aw)
 
 
-ar.Size=UDim2.new(0,av,0,math.min(ar.AbsoluteSize.Y,aw))
+local b=am.UIElements.UIListLayout.AbsoluteContentSize.Y+(an.MenuPadding*2)
+if am.SearchBarEnabled then
+b=b+an.SearchBarHeight+an.MenuPadding
+end
+
+ar.Size=UDim2.new(0,az,0,math.min(b,ay))
 end
 
 local ar

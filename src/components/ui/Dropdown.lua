@@ -109,30 +109,40 @@ function DropdownMenu.New(Config, Dropdown, Element, CanCallback, Type)
 end
     
     function UpdatePosition()
-    local menu = Dropdown.UIElements.MenuCanvas
-    
-    -- ⚙️ ADJUSTMENT MANUAL (ubah sesuai keinginan)
-    local padding = 48 -- jarak dari edge kanan
-    local topOffset = 64 -- jarak dari atas (topbar + extra)
-    local bottomPadding = 10 -- jarak dari bawah
-    local sideWidth = 140 -- lebar side panel (opsional, bisa pakai menu.AbsoluteSize.X)
-    
-    -- Hitung maxHeight agar tidak keluar window
-    local maxHeight = Camera.ViewportSize.Y - topOffset - bottomPadding
-    
-    -- Posisi X: di kanan window
-    local posX = Camera.ViewportSize.X - sideWidth - padding
-    
-    -- Pastikan tidak keluar window (safety check)
-    if posX < padding then
-        posX = padding
-    end
-    
-    -- Set posisi dan size
-    menu.Position = UDim2.new(0, posX, 0, topOffset)
-    
-    -- Adjust size dengan maxHeight (menu akan auto-scroll kalau konten lebih panjang)
-    menu.Size = UDim2.new(0, sideWidth, 0, math.min(menu.AbsoluteSize.Y, maxHeight))
+        local menu = Dropdown.UIElements.MenuCanvas
+        local window = Config.Window.UIElements.Main
+        
+        -- Ambil posisi dan size window yang sebenarnya
+        local windowPos = window.AbsolutePosition
+        local windowSize = window.AbsoluteSize
+        
+        -- Settings
+        local rightPadding = 10 -- jarak dari edge kanan window
+        local topOffset = 54 -- jarak dari atas window
+        local bottomPadding = 10 -- jarak dari bawah window
+        
+        -- Hitung maxHeight berdasarkan window (bukan layar)
+        local maxHeight = windowSize.Y - topOffset - bottomPadding
+        
+        -- Posisi X: di kanan window (dalam koordinat window)
+        local menuWidth = menu.AbsoluteSize.X > 0 and menu.AbsoluteSize.X or Dropdown.MenuWidth
+        local posX = windowSize.X - menuWidth - rightPadding
+        
+        -- Pastikan tidak keluar window kiri
+        if posX < rightPadding then
+            posX = rightPadding
+        end
+        
+        -- Set posisi relatif ke window parent
+        menu.Position = UDim2.new(0, posX, 0, topOffset)
+        
+        -- Set size dengan maxHeight constraint
+        local contentHeight = Dropdown.UIElements.UIListLayout.AbsoluteContentSize.Y + (Element.MenuPadding * 2)
+        if Dropdown.SearchBarEnabled then
+            contentHeight = contentHeight + Element.SearchBarHeight + Element.MenuPadding
+        end
+        
+        menu.Size = UDim2.new(0, menuWidth, 0, math.min(contentHeight, maxHeight))
     end
     
     local SearchLabel
