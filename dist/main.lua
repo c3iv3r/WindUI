@@ -5832,7 +5832,7 @@ end
 
 local function RecalculateListSize()
 
-local ar=54
+local ar=50
 local as=10
 local at=ag.ViewportSize.Y-ar-(as*2)
 

@@ -98,7 +98,7 @@ function DropdownMenu.New(Config, Dropdown, Element, CanCallback, Type)
 
     local function RecalculateListSize()
     -- Full height side panel
-    local topbarOffset = 54
+    local topbarOffset = 50
     local padding = 10
     local MaxHeight = CurrentCamera.ViewportSize.Y - topbarOffset - (padding * 2)
     
