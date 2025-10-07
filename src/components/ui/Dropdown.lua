@@ -112,8 +112,7 @@ end
         local menu = Dropdown.UIElements.MenuCanvas
         local window = Config.Window.UIElements.Main
         
-        -- Ambil posisi dan size window yang sebenarnya
-        local windowPos = window.AbsolutePosition
+        -- Ambil size window
         local windowSize = window.AbsoluteSize
         
         -- Settings
@@ -121,20 +120,15 @@ end
         local topOffset = 54 -- jarak dari atas window
         local bottomPadding = 10 -- jarak dari bawah window
         
-        -- Hitung maxHeight berdasarkan window (bukan layar)
+        -- Hitung maxHeight berdasarkan window
         local maxHeight = windowSize.Y - topOffset - bottomPadding
         
-        -- Posisi X: di kanan window (dalam koordinat window)
+        -- Get menu width
         local menuWidth = menu.AbsoluteSize.X > 0 and menu.AbsoluteSize.X or Dropdown.MenuWidth
-        local posX = windowSize.X - menuWidth - rightPadding
         
-        -- Pastikan tidak keluar window kiri
-        if posX < rightPadding then
-            posX = rightPadding
-        end
-        
-        -- Set posisi relatif ke window parent
-        menu.Position = UDim2.new(0, posX, 0, topOffset)
+        -- Posisi pakai Scale untuk X (1 = kanan, 0 = kiri)
+        -- Offset negatif untuk padding dari kanan
+        menu.Position = UDim2.new(1, -rightPadding - menuWidth, 0, topOffset)
         
         -- Set size dengan maxHeight constraint
         local contentHeight = Dropdown.UIElements.UIListLayout.AbsoluteContentSize.Y + (Element.MenuPadding * 2)

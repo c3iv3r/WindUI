@@ -5844,39 +5844,33 @@ end
 
 function UpdatePosition()
 local ar=am.UIElements.MenuCanvas
-local as=al.Window.UIElements.Main local at=
+local as=al.Window.UIElements.Main
 
 
-as.AbsolutePosition
-local au=as.AbsoluteSize
+local at=as.AbsoluteSize
 
 
-local av=10
-local aw=54
-local ax=10
+local au=10
+local av=54
+local aw=10
 
 
-local ay=au.Y-aw-ax
+local ax=at.Y-av-aw
 
 
-local az=ar.AbsoluteSize.X>0 and ar.AbsoluteSize.X or am.MenuWidth
-local aA=au.X-az-av
+local ay=ar.AbsoluteSize.X>0 and ar.AbsoluteSize.X or am.MenuWidth
 
 
-if aA<av then
-aA=av
-end
+
+ar.Position=UDim2.new(1,-au-ay,0,av)
 
 
-ar.Position=UDim2.new(0,aA,0,aw)
-
-
-local b=am.UIElements.UIListLayout.AbsoluteContentSize.Y+(an.MenuPadding*2)
+local az=am.UIElements.UIListLayout.AbsoluteContentSize.Y+(an.MenuPadding*2)
 if am.SearchBarEnabled then
-b=b+an.SearchBarHeight+an.MenuPadding
+az=az+an.SearchBarHeight+an.MenuPadding
 end
 
-ar.Size=UDim2.new(0,az,0,math.min(b,ay))
+ar.Size=UDim2.new(0,ay,0,math.min(az,ax))
 end
 
 local ar
