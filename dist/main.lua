@@ -5850,7 +5850,7 @@ local as=al.Window.UIElements.Main
 local at=as.AbsoluteSize
 
 
-local au=48
+local au=0
 local av=54
 local aw=10
 
