@@ -116,7 +116,7 @@ end
         local windowSize = window.AbsoluteSize
         
         -- Settings
-        local rightPadding = 10 -- jarak dari edge kanan window
+        local rightPadding = 48 -- jarak dari edge kanan window
         local topOffset = 54 -- jarak dari atas window
         local bottomPadding = 10 -- jarak dari bawah window
         
